@@ -37,7 +37,7 @@ MAPMBWT
 |-- main.go                              Multiple Approximate Pattern Matching Algorithm.
 |-- compare.go                           Classify match sequences according to difference threshold.
 |-- align.go                             Find position of SNPs.
-|-- Sra_SARs_CoV_2.fasta                 SRA file.
+|-- Sra_SARs_CoV_2.fasta                 Sequence read archive file.
 |-- Ref_SARs_CoV_2.fa                    Reference genome file.
 
 ```
