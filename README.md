@@ -14,7 +14,7 @@ We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amaz
 
 Download the project and organize the folders as follows:
 ```
-bwa.kit
+MAPMBWT
 |-- README.md                  This README file.
 |-- run-bwamem                 *Entry script* for the entire mapping pipeline.
 |-- bwa                        *BWA binary*
