@@ -45,6 +45,9 @@ MAPMBWT
 **3 Code-Running Steps**
 
 Step 1: _go run index.go_
+
 Step 2: _go run main.go_
+
 Step 3: _go run compare.go_
+
 Step 4: _go run align.go_
