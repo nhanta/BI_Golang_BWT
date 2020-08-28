@@ -44,10 +44,10 @@ MAPMBWT
 
 **3 Code-Running Steps**
 
-Step 1: _go run index.go_
+Step 1: ```go run index.go```
 
-Step 2: _go run main.go_
+Step 2: ```go run main.go```
 
-Step 3: _go run compare.go_
+Step 3: ```go run compare.go```
 
-Step 4: _go run align.go_
+Step 4: ```go run align.go```
