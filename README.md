@@ -1,4 +1,4 @@
-# Applied Concurrency Technique in MultipleApproximate Pattern Matching Problem with Burrows-Wheeler Transform
+# Applied Concurrency Technique in Multiple Approximate Pattern Matching Problem with Burrows-Wheeler Transform
 #
 **1 Introduction**
 
@@ -6,91 +6,45 @@ We focused on designing algorithms on the basis of the Burrows-Wheeler Transform
 
 **2 Data**
 
-We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra\_SARs\_CoV\_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
+We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra_SARs_CoV_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
-[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref\_SARs\_CoV\_2.fa**.
+[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref_SARs_CoV_2.fa**.
 
-**2 Preparation**
+**3 Preparation**
 
 Download the project and organize the folders as follows:
 ```
 MAPMBWT
-|-- README.md                  This README file.
-|-- run-bwamem                 *Entry script* for the entire mapping pipeline.
-|-- bwa                        *BWA binary*
-|-- k8                         Interpretor for *.js scripts.
-|-- bwa-postalt.js             Post-process alignments to ALT contigs/decoys/HLA genes.
-|-- htsbox                     Used by run-bwamem for shuffling BAMs and BAM=>FASTQ.
-|-- samblaster                 MarkDuplicates for reads from the same library. v0.1.20
-|-- samtools                   SAMtools for sorting and SAM=>BAM conversion. v1.1
-|-- seqtk                      For FASTQ manipulation.
-|-- trimadap                   Trim Illumina PE sequencing adapters.
-|
-|-- run-gen-ref                *Entry script* for generating human reference genomes.
-|-- resource-GRCh38            Resources for generating GRCh38
-|   |-- hs38DH-extra.fa        Decoy and HLA gene sequences. Used by run-gen-ref.
-|   `-- hs38DH.fa.alt          ALT-to-GRCh38 alignment. Used by run-gen-ref.
-|
-|-- run-HLA                    HLA typing for sequences extracted by bwa-postalt.js.
-|-- typeHLA.sh                 Type one HLA-gene. Called by run-HLA.
-|-- typeHLA.js                 HLA typing from exon-to-contig alignment. Used by typeHLA.sh.
-|-- typeHLA-selctg.js          Select contigs overlapping HLA exons. Used by typeHLA.sh.
-|-- fermi2.pl                  Fermi2 wrapper. Used by typeHLA.sh for de novo assembly.
-|-- fermi2                     Fermi2 binary. Used by fermi2.pl.
-|-- ropebwt2                   RopeBWT2 binary. Used by fermi2.pl.
-|-- resource-human-HLA         Resources for HLA typing
-|   |-- HLA-ALT-exons.bed      Exonic regions of HLA ALT contigs. Used by typeHLA.sh.
-|   |-- HLA-CDS.fa             CDS of HLA-{A,B,C,DQA1,DQB1,DRB1} genes from IMGT/HLA-3.18.0.
-|   |-- HLA-ALT-type.txt       HLA types for each HLA ALT contig. Not used.
-|   `-- HLA-ALT-idx            BWA indices of each HLA ALT contig. Used by typeHLA.sh
-|       `-- (...)
-|
-`-- doc                        BWA documentations
-    |-- bwa.1                  Manpage
-    |-- NEWS.md                Release Notes
-    |-- README.md              GitHub README page
-    `-- README-alt.md          Documentation for ALT mapping
+|-- Packages            
+|   |-- CheckPoint                       Create_CheckPoint Arrays_ with different parameters k.
+|   `-- CheckPointArrays.go      
+|   |-- ConverttoByte                    Convert an integer to a byte.
+|   `-- InttoByte.go
+|   |-- MemUsage                         Print memory usage.
+|   `-- PrintMemUsage.go
+|   |-- PartialSuffixArrays              Create _Partial Suffix Arrays_ with different parameters c.
+|   `-- partialsuffixarrays.go
+|   |-- ReadFiles                        Write and read files.
+|   `-- readlines.go
+|   `-- readwords.go
+|   `-- rwjson.go
+|   `-- rwstringtotext.go
+|   |-- ReverseSeq                       Convert a sequence to its complementary. 
+|   `-- ReverseSeq.go
+|   |--TexttoBWT                         Creating _Burrows-Wheeler Transform._
+|   `-- texttobwt.go
+|-- index.go                             Export _CheckPoint Arrays_, _Partial Suffix Arrays_, and _Burrows-Wheeler Transform._
+|-- main.go                              Multiple Approximate Pattern Matching Algorithm.
+|-- compare.go                           Classify match sequences according to difference threshold.
+|-- align.go                             Find position of SNPs.
+|-- Sra_SARs_CoV_2.fasta                 SRA file.
+|-- Ref_SARs_CoV_2.fa                    Reference genome file.
+
 ```
 
+**3 Code-Running Steps**
 
-**3 Training Model**
-
-Python code: **BI\_Rice\_SNPs.py**
-
-_The code is run with Python 3.7.1. Pandas package and scikit-learn package need to be installed before running the code._
-
-The data from _Export\_data.rar_ is used to train the model.
-
-
-3.1 Grid Search with cross-validation: [sklearn.model\_selection.GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.model\_selection.GridSearchCV.html
-
-Used with random forest regression and support vector regression.
-
-3.2 Radom forest regression: [sklearn.ensemble.RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
-
-3.3 Support vector regression: [sklearn.svm.SVR](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html
-
-3.4 Lasso with cross-validation: [sklearn.linear\_model.LassoCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.linear\_model.LassoCV.html
-
-3.5 Multi-task Lasso with cross-validation: [sklearn.linear\_model.MultiTaskLassoCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.linear\_model.MultiTaskLassoCV.html
-
-3.6 Elastic Net with cross-validation: [sklearn.linear\_model.ElasticNetCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNetCV.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.linear\_model.ElasticNetCV.html
-
-3.7 Multi-task Elastic Net with cross-validation: [sklearn.linear\_model.MultiTaskElasticNetCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskElasticNetCV.html)
-
-Link: https://scikit-learn.org/stable/modules/generated/sklearn.linear\_model.MultiTaskElasticNetCV.html
-
-The results have been compressed into the file _Results.rar._
-
+Step 1: _go run index.go_
+Step 2: _go run main.go_
+Step 3: _go run compare.go_
+Step 4: _go run align.go_
