@@ -5,11 +5,12 @@
 We focused on designing algorithms on the basis of the Burrows-Wheeler Transform algorithm improvement to achieve the highest efficiency when deploying and taking advantage of Golang's strengths. We hope that this is an approach for testing the new programming language that has advantages in speed, popularity, and ease of installation on universal computing systems for the bioinformatics problem in general, and the problem of sequence alignment in particular.
 
 **2 Data**
-_We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads \cite{KwaZulu2020}. The FASTQ file  was converted to the fasta file (named "Sra\_SARs\_CoV\_2.fasta") by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
-**2 Filtering Data**
+_We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra\_SARs\_CoV\_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
-Python code: **BI\_Rice\_SNPs\_Pvl\_Filtering.py**
+_[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref\_SARs\_CoV\_2.fa**.
+
+**2 Preparation**
 
 _The code is run with Python 3.7.1. Pandas package need to be installed before running the code._
 
