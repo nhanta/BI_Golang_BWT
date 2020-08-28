@@ -16,13 +16,13 @@ Download the project and organize the folders as follows:
 ```
 MAPMBWT
 |-- Packages            
-|   |-- CheckPoint                       Create_CheckPoint Arrays_ with different parameters k.
+|   |-- CheckPoint                       Create CheckPoint Arrays with different parameters k.
 |   `-- CheckPointArrays.go      
 |   |-- ConverttoByte                    Convert an integer to a byte.
 |   `-- InttoByte.go
 |   |-- MemUsage                         Print memory usage.
 |   `-- PrintMemUsage.go
-|   |-- PartialSuffixArrays              Create _Partial Suffix Arrays_ with different parameters c.
+|   |-- PartialSuffixArrays              Create Partial Suffix Arrays with different parameters c.
 |   `-- partialsuffixarrays.go
 |   |-- ReadFiles                        Write and read files.
 |   `-- readlines.go
@@ -31,7 +31,7 @@ MAPMBWT
 |   `-- rwstringtotext.go
 |   |-- ReverseSeq                       Convert a sequence to its complementary. 
 |   `-- ReverseSeq.go
-|   |--TexttoBWT                         Creating _Burrows-Wheeler Transform._
+|   |--TexttoBWT                         Create Burrows-Wheeler Transform.
 |   `-- texttobwt.go
 |-- index.go                             Export _CheckPoint Arrays_, _Partial Suffix Arrays_, and _Burrows-Wheeler Transform._
 |-- main.go                              Multiple Approximate Pattern Matching Algorithm.
