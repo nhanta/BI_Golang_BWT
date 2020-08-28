@@ -6,17 +6,30 @@ We focused on designing algorithms on the basis of the Burrows-Wheeler Transform
 
 **2 Data**
 
-_We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra\_SARs\_CoV\_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
+We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra\_SARs\_CoV\_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
-_[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref\_SARs\_CoV\_2.fa**.
+[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref\_SARs\_CoV\_2.fa**.
 
 **2 Preparation**
 
-_The code is run with Python 3.7.1. Pandas package need to be installed before running the code._
-
-Using the data from _Prepared\_data.rar_.
-
-Filtering the data with p value, then put it into the models for training. We have also saved the results in _Export\_data.rar._
+Download the project and organize the folders as follows:
+MAPMBWT
+|-- README.md                  This README file.
+|-- run-bwamem                 *Entry script* for the entire mapping pipeline.
+|-- bwa                        *BWA binary*
+|-- k8                         Interpretor for *.js scripts.
+|-- bwa-postalt.js             Post-process alignments to ALT contigs/decoys/HLA genes.
+|-- htsbox                     Used by run-bwamem for shuffling BAMs and BAM=>FASTQ.
+|-- samblaster                 MarkDuplicates for reads from the same library. v0.1.20
+|-- samtools                   SAMtools for sorting and SAM=>BAM conversion. v1.1
+|-- seqtk                      For FASTQ manipulation.
+|-- trimadap                   Trim Illumina PE sequencing adapters.
+|
+|-- run-gen-ref                *Entry script* for generating human reference genomes.
+|-- resource-GRCh38            Resources for generating GRCh38
+|   |-- hs38DH-extra.fa        Decoy and HLA gene sequences. Used by run-gen-ref.
+|   `-- hs38DH.fa.alt          ALT-to-GRCh38 alignment. Used by run-gen-ref.
+|
 
 **3 Training Model**
 
