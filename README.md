@@ -1,10 +1,11 @@
 # Applied Concurrency Technique in MultipleApproximate Pattern Matching Problem with Burrows-Wheeler Transform
 #
 **1 Introduction**
+
 We focused on designing algorithms on the basis of the Burrows-Wheeler Transform algorithm improvement to achieve the highest efficiency when deploying and taking advantage of Golang's strengths. We hope that this is an approach for testing the new programming language that has advantages in speed, popularity, and ease of installation on universal computing systems for the bioinformatics problem in general, and the problem of sequence alignment in particular.
 
 **2 Data**
-_We retrieved the raw sequences of SARS-CoV-2 published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA)\footnote{\url{https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1}}. The FASTQ file includes 436.610 paired-end reads \cite{KwaZulu2020}. The FASTQ file  was converted to the fasta file (named "Sra\_SARs\_CoV\_2.fasta") by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5
+_We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads \cite{KwaZulu2020}. The FASTQ file  was converted to the fasta file (named "Sra\_SARs\_CoV\_2.fasta") by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
 **2 Filtering Data**
 
