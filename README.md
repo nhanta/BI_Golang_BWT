@@ -13,7 +13,8 @@ We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amaz
 **2 Preparation**
 
 Download the project and organize the folders as follows:
-MAPMBWT
+```
+bwa.kit
 |-- README.md                  This README file.
 |-- run-bwamem                 *Entry script* for the entire mapping pipeline.
 |-- bwa                        *BWA binary*
@@ -30,6 +31,27 @@ MAPMBWT
 |   |-- hs38DH-extra.fa        Decoy and HLA gene sequences. Used by run-gen-ref.
 |   `-- hs38DH.fa.alt          ALT-to-GRCh38 alignment. Used by run-gen-ref.
 |
+|-- run-HLA                    HLA typing for sequences extracted by bwa-postalt.js.
+|-- typeHLA.sh                 Type one HLA-gene. Called by run-HLA.
+|-- typeHLA.js                 HLA typing from exon-to-contig alignment. Used by typeHLA.sh.
+|-- typeHLA-selctg.js          Select contigs overlapping HLA exons. Used by typeHLA.sh.
+|-- fermi2.pl                  Fermi2 wrapper. Used by typeHLA.sh for de novo assembly.
+|-- fermi2                     Fermi2 binary. Used by fermi2.pl.
+|-- ropebwt2                   RopeBWT2 binary. Used by fermi2.pl.
+|-- resource-human-HLA         Resources for HLA typing
+|   |-- HLA-ALT-exons.bed      Exonic regions of HLA ALT contigs. Used by typeHLA.sh.
+|   |-- HLA-CDS.fa             CDS of HLA-{A,B,C,DQA1,DQB1,DRB1} genes from IMGT/HLA-3.18.0.
+|   |-- HLA-ALT-type.txt       HLA types for each HLA ALT contig. Not used.
+|   `-- HLA-ALT-idx            BWA indices of each HLA ALT contig. Used by typeHLA.sh
+|       `-- (...)
+|
+`-- doc                        BWA documentations
+    |-- bwa.1                  Manpage
+    |-- NEWS.md                Release Notes
+    |-- README.md              GitHub README page
+    `-- README-alt.md          Documentation for ALT mapping
+```
+
 
 **3 Training Model**
 
