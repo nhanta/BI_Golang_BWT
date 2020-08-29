@@ -6,9 +6,9 @@ We focused on designing algorithms on the basis of the Burrows-Wheeler Transform
 
 **2 Data**
 
-We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named **Sra_SARs_CoV_2.fasta**) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
+We retrieved the [raw sequences of SARS-CoV-2](https://sra-pub-sars-cov2.s3.amazonaws.com/sra-src/SRR12338312/KPCOVID-345_S81_L001_R1_001.fastq.gz.1) published on July 28, 2020 by KwaZulu-Natal Research Innovation and Sequencing Platform from the Sequence Read Archive (SRA). The FASTQ file includes 436.610 paired-end reads. The FASTQ file  was converted to the fasta file (named [**Sra_SARs_CoV_2.fasta**](https://drive.google.com/file/d/1Wo6yStP5t2wcs5b1HrwPdxNQVMUl49mG/view?usp=sharing)) by the tool FASTQ to FASTA converter on Galaxy Version 1.1.5.
 
-[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to **Ref_SARs_CoV_2.fa**.
+[The genome assembly of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2) published by Fan Wu et al. (2020), which is 24748 bp long was used as the reference genome for alignment. The reference genome file was renamed to [**Ref_SARs_CoV_2.fa**](https://drive.google.com/file/d/1LUq_BMLc1IEnCs70-je0H92GBpVxuQgJ/view?usp=sharing).
 
 **3 Preparation**
 
