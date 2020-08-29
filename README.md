@@ -33,7 +33,7 @@ MAPMBWT
 |   `-- ReverseSeq.go
 |   |--TexttoBWT                         Create Burrows-Wheeler Transform.
 |   `-- texttobwt.go
-|-- index.go                             Export _CheckPoint Arrays_, _Partial Suffix Arrays_, and _Burrows-Wheeler Transform._
+|-- index.go                             Export CheckPoint Arrays, Partial Suffix Arrays, and Burrows-Wheeler Transform.
 |-- main.go                              Multiple Approximate Pattern Matching Algorithm.
 |-- compare.go                           Classify match sequences according to difference threshold.
 |-- align.go                             Find position of SNPs.
