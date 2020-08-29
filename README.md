@@ -42,7 +42,7 @@ MAPMBWT
 
 ```
 
-**3 Code-Running Steps**
+**3 Step Through the Program**
 
 - Step 1: ```go run index.go```
 
