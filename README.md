@@ -46,8 +46,8 @@ MAPMBWT
 
 - Step 1: ```go run index.go```
 
-Step 2: ```go run main.go``` (To get the result as shown in the paper, one set d = 3)
+- Step 2: ```go run main.go``` (To get the result as shown in the paper, one set d = 3)
 
-Step 3: ```go run compare.go```
+- Step 3: ```go run compare.go```
 
-Step 4: ```go run align.go```
+- Step 4: ```go run align.go```
